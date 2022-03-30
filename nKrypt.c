@@ -12,10 +12,6 @@ int main(int argc, char **argv){
     FILE *input = fopen(argv[1], "r"); 
     FILE *output = fopen(argv[2], "w"); 
 
-    if(input == NULL){
-        printf("File does not exist");
-        return 1;
-    }
     if(output == NULL){
         printf("Error opening encrypted file");
         return 1; 
@@ -53,8 +49,6 @@ int encrypt(FILE *input,FILE *output,char *password){
         buffer[i] = buffer[i] ^ password[i % length]; //executes xor operation     
     }
     int w = fwrite(buffer, 1, filesize, output );  //writes data to output file
-    printf("written %d", w);      
+    printf("written %d\n", w);      
     free(buffer); 
 }
-
-//TODO: write a decryption function and ad more command line args
